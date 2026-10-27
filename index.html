@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TV energy use and electricity prices</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page">
+
+    <header class="intro">
+      <h1>What a TV uses, and what the power costs</h1>
+      <p>
+        Every TV sold in Australia carries a star rating and a yearly energy figure in
+        kilowatt-hours (kWh). The first three charts compare 587 TV models by star rating
+        and screen technology. The last one shows how the wholesale price of electricity
+        has changed since 1998.
+      </p>
+    </header>
+
+    <main class="charts">
+
+      <article class="card card--wide">
+        <h2>More stars usually means less energy</h2>
+        <p>
+          Each dot is one TV model. Models with higher star ratings tend to use less energy
+          (the correlation is about &minus;0.47), but the spread is large. A few very big
+          screens use over 1,000 kWh a year. Hover over a dot to see the model.
+        </p>
+        <div id="scatter" class="chart"></div>
+      </article>
+
+      <article class="card">
+        <h2>OLED sets use the most energy overall</h2>
+        <p>
+          Averaged over every screen size, OLED TVs use about 533 kWh a year. LCD TVs use
+          306. The slice sizes show each technology&rsquo;s average, so they do not add up
+          to a whole.
+        </p>
+        <div id="donut" class="chart"></div>
+      </article>
+
+      <article class="card">
+        <h2>At 55 inches the gap is much smaller</h2>
+        <p>
+          Compare only 55-inch TVs and the difference shrinks: LCD and LED are almost equal,
+          and OLED is about 60 kWh higher. In this data OLED sets are larger on average
+          (about 65 inches, against about 50 for LCD), which explains much of the
+          earlier gap.
+        </p>
+        <div id="bar" class="chart"></div>
+      </article>
+
+      <article class="card card--wide">
+        <h2>Electricity prices stepped up after 2015</h2>
+        <p>
+          From 1998 to 2015 the average spot price stayed between about $30 and $65 per
+          megawatt hour. It reached $96 in 2016 and peaked at $144.50 in 2022. Select a name
+          in the key to hide or show a line, and hover over the chart to compare states
+          in any year.
+        </p>
+        <div id="line" class="chart"></div>
+      </article>
+
+    </main>
+
+    <footer class="footer">
+      <p>Data: Ex5 CSV files supplied for COS30045 Topic 5 (TV energy labels and electricity spot prices).</p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="js/shared.js"></script>
+  <script src="js/scatter.js"></script>
+  <script src="js/donut.js"></script>
+  <script src="js/bar.js"></script>
+  <script src="js/line.js"></script>
+</body>
+</html>
