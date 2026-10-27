@@ -1,0 +1,143 @@
+:root {
+  --ink: #17212b;
+  --muted: #4a5b6c;
+  --rule: #d5dce4;
+  --page: #eef2f6;
+  --card: #ffffff;
+  --focus: #0072B2;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+}
+
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: clamp(1rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem);
+}
+
+/* ---------- Header ---------- */
+.intro {
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid var(--ink);
+}
+.intro h1 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  max-width: 18ch;
+}
+.intro p {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--muted);
+}
+
+/* ---------- Layout ---------- */
+.charts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+@media (min-width: 900px) {
+  .charts { grid-template-columns: 1fr 1fr; }
+  .card--wide { grid-column: 1 / -1; }
+}
+
+.card {
+  min-width: 0;               /* lets grid items shrink so charts can resize */
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+.card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.3rem;
+  line-height: 1.25;
+}
+.card p {
+  margin: 0 0 1rem;
+  max-width: 62ch;
+  color: var(--muted);
+  font-size: 1rem;
+}
+.chart { min-width: 0; }
+
+.footer {
+  margin-top: 1.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Chart parts ---------- */
+svg { display: block; max-width: 100%; }
+.axis text { font-size: 12.5px; fill: var(--muted); }
+.axis-title { font-size: 13px; fill: var(--muted); }
+.axis path, .axis line { stroke: #aab5c1; }
+.grid line { stroke: #e3e8ee; }
+.grid .domain { display: none; }
+
+.bar-value { font-size: 14px; font-weight: 700; fill: var(--ink); text-anchor: middle; }
+.donut-svg { margin: 0 auto; }
+.donut-value { font-size: 1.9rem; font-weight: 700; fill: var(--ink); text-anchor: middle; }
+.donut-label { font-size: 0.9rem; fill: var(--muted); text-anchor: middle; }
+.donut-slice:focus { outline: none; stroke: var(--ink); stroke-width: 2px; }
+
+/* ---------- Legend ---------- */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.95rem;
+}
+.legend--centre { justify-content: center; margin: 0.75rem 0 0; }
+.legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--ink);
+}
+button.legend__item { cursor: pointer; padding: 0.2rem 0.3rem; border-radius: 3px; }
+button.legend__item[aria-pressed="false"] { opacity: 0.45; text-decoration: line-through; }
+button.legend__item:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.legend__swatch { width: 0.9rem; height: 0.9rem; border-radius: 2px; flex: none; }
+.legend__detail { color: var(--muted); }
+
+/* ---------- Tooltip ---------- */
+.tooltip {
+  position: fixed;
+  z-index: 10;
+  pointer-events: none;
+  max-width: 260px;
+  padding: 0.5rem 0.7rem;
+  background: var(--ink);
+  color: #fff;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  opacity: 0;
+}
+.tooltip.visible { opacity: 1; }
+.tip__row { display: flex; align-items: center; gap: 0.4rem; }
+.tip__swatch { width: 0.7rem; height: 0.7rem; border-radius: 2px; flex: none; border: 1px solid rgba(255, 255, 255, 0.7); }
+
+.error { color: #a4262c; font-weight: 700; }
